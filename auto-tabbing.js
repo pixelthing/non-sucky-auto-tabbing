@@ -14,25 +14,25 @@ $.fn.autoTab = function() {
     detectKeyUp();
   }
   
-  // tab key detection, hijack it if it's in the fields we're looking for
+  // keydown detection, hijack it if it's in the fields we're looking for
   var detectKeyDown = function() {
     autoTabbedInputs.on('keydown',function(ev){
       // the field that you're in when you keydown might not be the field you're in when you keyup
       inputField = this;
-      // detect keystroke in the fields (but not shift-tab)
+      // detect keystroke in the fields 
       ev = ev || event;
       var charCode = null;
-      if ("which" in ev) // NN4 & FF & Opera
+      if ("which" in ev)
         charCode = ev.which;
-      else if ("keyCode" in e) // Safari & IE4+
+      else if ("keyCode" in e)
         charCode = ev.keyCode;
-      else if ("keyCode" in window.event) // IE4+
+      else if ("keyCode" in window.event)
         charCode = window.event.keyCode;
-      else if ("which" in window.event) // Other browsers support events
+      else if ("which" in window.event)
         charCode = window.event.which;
       // if tabbing forward
       if (charCode === 9 && !ev.shiftKey) {
-        // if auto tabbing is off, bug out now
+        // if auto tabbing is off, don't change it's behavior
         if (!autoTabOn) {
           return;
         }
@@ -67,6 +67,7 @@ $.fn.autoTab = function() {
         charCode === 109                  // "-" - for sortcodes (numberpad)
       ) {
         ev.preventDefault();
+        // if we've not yet hit the max chars for this field, and haven't already just auto-tabbed, fake a tab key
         if (!hasHitMaxChars(this) && !justAutoTabbed) {
           $(this).next("input,select,textarea,a").focus();
         }
@@ -76,19 +77,19 @@ $.fn.autoTab = function() {
     });
   }
   
-  // entering text into tabbed fields
+  // entering text into auto-tabbed fields
   var detectKeyUp = function() {
     almostTabbedInputs.on('keyup',function(ev){
       // if auto tabbing is off, bug out now
       if (!autoTabOn) {
         return;
       }
-      // if this keydown was a tab key, ignore this event (and reset it for the next keyup)
+      // if the complimentary keydown was a tab key, ignore this event (and reset it for the next keyup)
       if (tabKeyDetected) {
         tabKeyDetected = false;
         return;
       }
-      // if we're tabbing backwards, don't jump forwards again!
+      // if we were tabbing backwards, don't jump forwards again!
       if (revTabKeyDetected) {
         revTabKeyDetected = false;
         return;
@@ -156,7 +157,7 @@ $.fn.autoTab = function() {
       removePopOver();
     })
   }
-  // remove pop-over function
+  // turn pop-over off
   var removePopOver = function(){
     $('.popover').removeClass('on')
     setTimeout(function(){
@@ -168,22 +169,3 @@ $.fn.autoTab = function() {
   init();
   
 }
-
-// go!
-$('#example1').autoTab();
-$('#example2').autoTab();
-$('#example3').autoTab();
-$('#example4').autoTab();
-
-// enable toggle
-var toggle = $('#autotab-toggle');
-toggle.click(function(ev){
-  ev.preventDefault();
-  if (toggle.hasClass('on')) {
-    autoTabOn = false;
-    $('#autotab-toggle').removeClass('on');
-  } else {
-    autoTabOn = true;
-    $('#autotab-toggle').addClass('on');
-  }
-})

@@ -89,7 +89,25 @@
 </script>
 
 <script src="auto-tabbing.js" type="text/javascript"></script>
-
+<script type="text/javascript">
+  // set up example
+  $('#example1').autoTab();
+  $('#example2').autoTab();
+  $('#example3').autoTab();
+  $('#example4').autoTab();
+  // enable toggle
+  var toggle = $('#autotab-toggle');
+  toggle.click(function(ev){
+    ev.preventDefault();
+    if (toggle.hasClass('on')) {
+      autoTabOn = false;
+      $('#autotab-toggle').removeClass('on');
+    } else {
+      autoTabOn = true;
+      $('#autotab-toggle').addClass('on');
+    }
+  })
+</script>
 </body>
 
 </html>
