@@ -1,0 +1,84 @@
+html
+  height: 100%
+body
+  min-height: 100%
+  margin: 10px
+  color: #fff
+  background: #7a7480 
+  @include background-image(linear-gradient(top, #474150, #7a7480))
+  background-repeat: no-repeat
+  font-family: avenir, sans-serif
+  font-size: 14px
+  
+.autotabbed-container
+  max-width: 680px
+  margin: 0 auto
+  
+.autotabbed
+  width: 300px
+  float: left
+  margin: 5px
+  padding: 10px
+  background: rgba(255,255,255,0.05)
+  border: 1px solid rgba(255,255,255,0.2)
+  font-size: 1.3em
+  text-align: center
+  h3,input
+    margin: 0 0 10px
+    font-size: 1em
+
+.popover
+  position: absolute
+  max-width: 150px
+  padding: 10px
+  color: #474150
+  background: #fafafa
+  border: 1px solid #fff
+  border-radius: 3px
+  box-shadow: 1px 1px 3px #000
+  opacity: 0
+  @include transition(all 500ms)
+  &.on
+    opacity: 1
+  &:before
+    content: ''
+    position: absolute
+    left: -10px
+    top: 10px
+    width: 0
+    height: 0
+    border-top: 10px solid transparent
+    border-right: 10px solid #fafafa
+    border-bottom: 10px solid transparent
+    
+#autotab-toggle
+  display: block
+  width: 180px
+  margin: 10px auto
+  padding: 5px 10px
+  color: red
+  background: rgba(255,0,0,0.1)
+  border: 1px solid red
+  border-radius: 100px
+  text-align: center
+  .on
+    display: none
+  .off
+    display: inline
+  &.on
+    color: #0c0
+    background: rgba(0,255,0,0.1)
+    border-color: #090
+    .on
+      display: inline
+    .off
+      display: none
+  
+.explain
+  max-width: 800px
+  margin: 20px auto
+
+.clear
+  height: 0
+  overflow: hidden
+  clear: both

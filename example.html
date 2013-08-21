@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!--[if lte IE 9]>
+<html class="ie" lang="en">
+<![endif]-->
+<!--[if gt IE 9]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+  <meta charset="UTF-8">
+  <title>Non-sucky Input field auto-tabbing</title>
+
+  <link href="auto-tabbing.css" media="screen" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+<div class="autotabbed-container">
+
+  <div id="example1" class="autotabbed">
+    <h3>Bank sort code: XX-XX-XX</h3>
+    <input type="text" maxlength="2" size="2" />
+    -
+    <input type="text" maxlength="2" size="2" />
+    -
+    <input type="text" maxlength="2" size="2" />
+  </div>
+  
+  
+  <div id="example2" class="autotabbed">
+    <h3>Date of birth</h3>
+    <input type="text" maxlength="2" size="2" placeholder="dd" />
+    <input type="text" maxlength="2" size="2" placeholder="mm" />
+    <input type="text" maxlength="4" size="4" placeholder="yyyy" />
+  </div>
+  
+  
+  <div id="example3" class="autotabbed">
+    <h3>IP Address</h3>
+    <input type="text" maxlength="3" size="3" />
+    .
+    <input type="text" maxlength="3" size="3" />
+    .
+    <input type="text" maxlength="3" size="3" />
+    .
+    <input type="text" maxlength="3" size="3" />
+  </div>
+  
+  
+  <div id="example4" class="autotabbed">
+    <h3>Credit Card No</h3>
+    <input type="text" maxlength="4" size="4" />
+    <input type="text" maxlength="4" size="4" />
+    <input type="text" maxlength="4" size="4" />
+    <input type="text" maxlength="4" size="4" />
+  </div>
+  
+  <div class="clear"></div>
+
+</div>
+  
+<a href="#" id="autotab-toggle" class="on">
+   <strong>AUTO-TABBING IS 
+     <span class="on">ON</span>
+     <span class="off">OFF</span>
+  </strong>
+</a>
+
+<div class="explain">
+  <h1>Auto-tab for everyone</h1>
+    
+  <p>Fields such as sort codes, birth dates and credit card numbers often have scripts attached that automatically tab you between fields as you fill them up.</p>
+  <p>This is <b>awesome</b> for 50% of people that either have that expectation or don't look at the screen while typing, and a <b>horribly frustrating annoyance</b> for people that are have built muscle memory for using the tab key.</p>
+  <p><i style="color:#f90">This jquery plugin attempts to please both sets of people.</i></p>
+  <p>It starts with "auto-tabbing" enabled by default. But if it detects that you fill in a field then hit tab immediately afterwards, it assumes that you'd prefer to use the tab key, returns your focus to the correct field, turns auto-tabbing off and alerts you that it's done so.</p>
+  <p>It's designed to work with multiple input groups on the same page, and if you turn off auto-tabbing on one group, it's disabled for all groups.</p>
+  
+  <h2>One more thing...</h2>
+  
+  <p>This plugin also substitutes certain characters for the tab key, for example if you're typing in a date, hyphened code or IP address, eg typing <i>28/07/1972</i> will substitute the "/" for an auto-tab and put each number in the correct box.</p>
+  
+  <hr>
+</div>
+
+<script type='text/javascript'>
+  //<![CDATA[
+    window.jQuery || document.write('<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js">\x3C/script>')
+  //]]>
+</script>
+
+<script src="auto-tabbing.js" type="text/javascript"></script>
+
+</body>
+
+</html>
