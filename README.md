@@ -13,3 +13,5 @@ It's designed to work with multiple input groups on the same page, and if you tu
 ## One more thing...
 
 This plugin also substitutes certain characters for the tab key, for example if you're typing in a date, hyphened code or IP address, eg typing 28/07/1972 will substitute the "/" for an auto-tab and put each number in the correct box.
+
+[see it in action on codepen](http://codepen.io/pixelthing/pen/lIiFt "Title")
